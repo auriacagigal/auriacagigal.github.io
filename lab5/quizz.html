@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Quizz</h2>
+    <form action="https://postman-echo.com/get" method="get">
+        <fieldset>
+            <legend>Formulário:</legend>
+            <p>Nome: <input type="text" name="nome"></p>
+            <p>Apelido: <input type="text" name="apelido"></p>
+            <p>Email: <input type="email" name="email"></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Perguntas</legend>
+
+            <!-- usar radiobutons -->
+            <label>Luanda é a capital de que país?</label>
+            <br>
+            <input type="radio" id="angola" name="country" value="Angola" required>
+            <label for="angola">Angola</label>
+            <br>
+            <input type="radio" id="mozambique" name="country" value="Moçambique">
+            <label for="mozambique">Moçambique</label>
+            <br>
+            <input type="radio" id="brazil" name="country" value="Brasil">
+            <label for="brazil">Brasil</label>
+            <br><br>
+
+            <!-- usar  checkbox -->
+            <label>Quais destas praias estão localizadas em Luanda? (Selecione todas que se aplicam)</label>
+            <br>
+            <input type="checkbox" id="mussulo" name="beach" value="Mussulo">
+            <label for="mussulo">Mussulo</label>
+            <br>
+            <input type="checkbox" id="ilha" name="beach" value="Ilha do Cabo">
+            <label for="ilha">Ilha do Cabo</label>
+            <br>
+            <input type="checkbox" id="ipanema" name="beach" value="Ipanema">
+            <label for="ipanema">Ipanema</label>
+            <br><br>
+
+
+            <!-- Input para o tipo date -->
+            <label for="funLuanda">Qual é a data de fundação de Luanda?</label>
+            <input type="date" id="funLuanda" name="funLuanda" required>
+            <br><br>
+
+            <!-- Input para o  tipo number -->
+            <label for="populacao">Qual é a população estimada de Luanda (em milhões)?</label>
+            <input type="number" id="populacao" name="populacao" min="1" max="20" step="0.1" required>
+            <br><br>
+
+            <!-- Input para o  tipo range -->
+            <label for="opiniao">Na sua opinião, qual é a importância histórica de Luanda numa escala de 1 a 10?</label>
+            <input type="range" id="opiniao" name="opiniao" min="1" max="10" value="5">
+            <br><br>
+
+            <!-- Select -->
+            <label for="fortaleza">Qual é o nome da famosa fortaleza de Luanda?</label>
+            <select id="fortaleza" name="fortaleza" required>
+                <option value="">Selecione</option>
+                <option value="São Miguel">Fortaleza de São Miguel</option>
+                <option value="São Jorge">Fortaleza de São Jorge</option>
+                <option value="São Francisco">Fortaleza de São Francisco</option>
+            </select>
+            <br><br>
+
+            <!-- Textarea -->
+            <label for="opinion">O que mais te fascina sobre a cidade de Luanda?</label>
+            <br>
+            <textarea id="opinion" name="opinion" rows="4" cols="50" placeholder="Escreva aqui.."></textarea>
+            <br><br>
+
+              <!-- Input para o tipo color -->
+              <label for="cidadeCor">Escolha uma cor que você associa a Luanda:</label>
+              <input type="color" id="cidadeCor" name="cidadeCor" value="#FF5733">
+              <br><br>
+  
+              <!-- Input para o tipo time -->
+              <label for="melhorHora">Qual o melhor horário para ver o pôr-do-sol em Luanda?</label>
+              <input type="time" id="melhorHora" name="melhorHora" required>
+              <br><br>
+  
+              <!-- Input para o  tipo image -->
+              <label for="representaLuanda">Para terminar este formulario clique na imagem:</label>
+              <input type="image" id="representaLuanda" src="images/sorriso.jpg" alt="Zungueira" >
+              <br><br>
+
+            <input type="submit" value="Submit">
+
+        </fieldset>
+    </form>
+</body>
+</html>
