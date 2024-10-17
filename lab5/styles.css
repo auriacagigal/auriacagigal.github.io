@@ -4,7 +4,7 @@
 }
 /* Estilo para o body */
 body {
-    background-color: #fff4e0; /* Fundo em tom suave, inspirado na areia e no calor */
+    background-color: #fff4e0; /* Fundo em tom suave */
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -15,14 +15,14 @@ body {
 header {
     text-align: center;
     padding: 20px 0;
-    background-color: #d62828; /* Vermelho vibrante inspirado na bandeira de Angola */
+    background-color: #d62828; 
 }
 
 h1.cimaSite {
     margin: 0;
     font-size: 3em;
-    color: #fcbf49; /* Amarelo vibrante para destacar o título */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Pequena sombra para dar profundidade */
+    color: #fcbf49; /* Amarelo  para destacar o título */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra  */
 }
 
 /* Estilo para o menu de navegação */
@@ -46,7 +46,7 @@ nav a:hover {
     border-radius: 5px; /* Bordas arredondadas para suavizar */
 }
 
-/* Centralização da imagem */
+
 #centralizarImg {
     display: block;
     margin: 25px auto; /* Centraliza e adiciona espaçamento */
@@ -73,7 +73,7 @@ h2 {
 
 p {
     font-size: 1.3em;
-    color: #fcbf49; /* Amarelo para o texto, em harmonia com o design */
+    color: #fcbf49; /* Amarelo para o texto*/
     line-height: 1.6; /* Melhor espaçamento entre linhas */
 }
 
