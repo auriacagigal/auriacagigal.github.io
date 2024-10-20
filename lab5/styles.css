@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: Garamond, serif;
 }
 /* Estilo para o body */
 body {
@@ -168,6 +169,10 @@ input {
 label, input {
     display: block;
     margin-bottom: 10px;
+}
+
+.zoom-img {
+    cursor: zoom-in; /* Altera o cursor para "zoom-in" */
 }
 
 

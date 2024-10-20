@@ -1,0 +1,252 @@
+* {
+    margin:0;  
+    padding:0;  
+    box-sizing: border-box; /* medidas sao tomadas da borda */
+    font-family: Garamond, serif;
+}
+header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f4f4f4; /* Cor de fundo do cabeçalho */
+    color: #333; /* Cor do texto */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+    z-index: 1000;
+}
+
+/* Estilo para o título */
+h1 {
+    margin: 0;
+}
+
+/* Estilo para a navegação */
+nav a {
+    padding: 20px;
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #333; /* Cor da fonte dos links */
+}
+
+/* Estilos pseudo-elementos */
+nav a:link {
+    color: #007bff; /* Cor para links não visitados */
+}
+
+nav a:visited {
+    color: #5a5a5a; /* Cor para links visitados */
+}
+
+nav a:hover {
+    color: #0056b3; /* Cor ao passar o mouse */
+}
+
+nav a:active {
+    color: #003d7a; /* Cor ao clicar */
+}
+
+/* Estilo para o último link diferenciado */
+nav a:last-child {
+    background-color: #ffcc00; /* Cor de fundo diferente */
+    border-radius: 5px;
+}
+
+/* Estilo para o artigo "poema" */
+article#poema {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+    background-color: #e0f7fa; /* Cor de fundo do artigo */
+    text-align: center; /* Texto centrado */
+}
+
+/* Estilo para o poema */
+article#poema p {
+    font-size: 1.5rem;
+    font-weight: bold; /* Negrito no poema */
+    margin: 0;
+}
+
+/* Estilo para o autor */
+article#poema .autor {
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-style: italic; /* Itálico no nome do autor */
+    margin-top: 10px;
+}
+
+/* Estilo para o artigo "paisagem" */
+article#paisagem {
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: auto;
+}
+
+.image-container {
+    position: relative; /* Elemento pai para uso do position:absolute */
+}
+
+.image-container img {
+    width: 100vw; /* Imagem ocupa toda a largura do navegador */
+    height: auto; /* Altura ajusta automaticamente */
+}
+
+.photographer {
+    position: absolute; /* Posicionamento absoluto dentro do elemento pai */
+    bottom: 10px; /* Distância do rodapé */
+    right: 10px; /* Distância do lado direito */
+    color: white; /* Texto branco que contrasta com a imagem */
+    font-size: 1rem;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para melhor legibilidade */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.photographer a {
+    color: #fff; /* Cor do link branca */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.photographer a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+/* Estilo para o artigo "cidades" */
+article#cidades {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as seções quebrem linha quando necessário */
+    justify-content: space-between; /* Distribui uniformemente os elementos */
+    align-items: center; /* Centraliza os itens verticalmente */
+    background-color: #f0f0f0; /* Cor de fundo do artigo */
+    padding: 20px;
+    gap: 20px; /* Espaçamento entre as seções */
+}
+
+article#cidades section {
+    display: flex;
+    flex-direction: column; /* Organiza a imagem e o texto em coluna */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    flex-basis: calc(33.33% - 40px); /* 3 elementos por linha com espaço entre eles */
+    margin: 10px;
+    background-color: #fff; /* Fundo branco para as seções */
+    border-radius: 20px; /* Canto arredondado para a seção */
+    overflow: hidden; /* Garante que o conteúdo respeite o border-radius */
+    transition: background-color 0.3s ease; /* Animação suave para hover */
+}
+
+article#cidades section:hover {
+    background-color: #e0e0e0; /* Muda a cor de fundo ao passar o mouse */
+}
+
+article#cidades img {
+    width: 100px; /* Largura da imagem */
+    height: auto; /* Ajuste automático da altura */
+    border-top-left-radius: 20px; /* Canto arredondado só no topo esquerdo */
+    border-top-right-radius: 20px; /* Canto arredondado só no topo direito */
+}
+
+article#cidades div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ocupa toda a largura da seção */
+    height: 100%; /* Ocupa toda a altura da imagem */
+    background-color: #f9f9f9; /* Fundo mais claro para o texto */
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+/* Estilo para a secção "experimenta" */
+section#experimenta {
+    padding: 40px;
+    background-color: #f0f8ff;
+}
+
+/* Estilo para os círculos */
+.circle-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #6a5acd; /* Cor de fundo */
+    color: white;
+    border-radius: 50%; /* Torna o quadrado um círculo */
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.circle:hover {
+    background-color: #483d8b; /* Muda de cor ao passar o mouse */
+}
+
+/* Estilo para o efeito hover oculto */
+.hidden-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    background-color: #87ceeb;
+    color: white;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hidden-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden-message {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.hidden-box:hover .hidden-content {
+    display: none; /* Esconde o texto ao passar o mouse */
+}
+
+.hidden-box:hover .hidden-message {
+    display: block; /* Mostra a surpresa ao passar o mouse */
+}
+
+/* Estilo para os ícones do Google */
+.icon-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.material-icons {
+    font-size: 40px;
+    color: #ff6347;
+    transition: color 0.3s ease;
+}
+
+.material-icons:hover {
+    color: #ffa07a; /* Muda a cor ao passar o mouse */
+}
