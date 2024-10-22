@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <h1 class="cimaSite">Luanda</h1>
+        <nav class="bordas">
+            <a href="index.html">Home</a>
+            <a href="local.html">Localização</a>
+            <a href="multimedia.html">Multimédia</a>
+            <a href="info.html">Informação</a>
+            <a href="quizz.html">Quizz</a>
+            <a href="viagem.html">Viagem</a>
+            <a href="pontosinteresse.html"> Pontos Interessantes</a>
+            <a href="capitais.html">Capitais</a>
+        </nav>
+    </header>
+    <form action="" method="get">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+
+            <!-- Nome -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o seu nome" required>
+            <br><br>
+
+            <!-- Apelido -->
+            <label for="apelido">Apelido:</label>
+            <input type="text" id="apelido" name="apelido" placeholder="Digite o seu apelido">
+            <br><br>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite o seu email" required>
+            <br><br>
+        </fieldset>
+
+        <!-- Informações da viagem -->
+        <fieldset>
+            <legend>Informações da Viagem</legend>
+
+            <!-- Data de partida -->
+            <label for="dataPartida">Data de partida:</label>
+            <input type="date" id="dataPartida" name="dataPartida" required>
+            <br><br>
+
+            <!-- Data de regresso -->
+            <label for="dataRegresso">Data de regresso:</label>
+            <input type="date" id="dataRegresso" name="dataRegresso">
+            <br><br>
+
+            <!-- Número de passageiros -->
+            <label for="passageiros">Número de passageiros:</label>
+            <input type="number" id="passageiros" name="passageiros" min="1" max="50" value="1" required>
+            <br><br>
+
+            <!-- Meio de transporte favorito -->
+            <label for="transporte">Meio de transporte favorito:</label>
+            <select id="transporte" name="transporte">
+                <option value="carro">Carro</option>
+                <option value="comboio">Comboio</option>
+                <option value="aviao">Avião</option>
+                <option value="autocarro">Autocarro</option>
+                <option value="barco">Barco</option>
+                <option value="outros">Outros</option>
+            </select>
+            <br><br>
+
+            <!-- Serviço desejado -->
+            <label>Tipo de serviço desejado:</label>
+            <br>
+            <input type="radio" id="basico" name="servico" value="básico" required>
+            <label for="basico">Básico</label>
+            <br>
+            <input type="radio" id="premium" name="servico" value="premium">
+            <label for="premium">Premium</label>
+            <br>  <br>        
+
+            <label for="pedidos">Tem algum pedido especial para a viagem?</label>
+            <br>
+            <textarea id="pedidos" name="pedidos" rows="4" cols="50" placeholder="Digite aqui os seus pedidos especiais"></textarea>
+            <br>
+            <label for="valor">Valor esperado por pessoa e por dia (em Euros):</label>
+            <input type="number" id="valor" name="valor" min="0" step="0.01" placeholder="Ex: 100.00">
+            <br><br>
+            
+        </fieldset>
+
+        
+
+       
+
+        <!-- Botão de submissão -->
+        <input type="submit" value="Submeter">
+    
+    </form>
+    
+</body>
+</html>

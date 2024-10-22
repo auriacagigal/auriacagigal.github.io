@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Garamond, serif;
+    box-sizing: border-box;
+}
+/* Estilo para o body */
+body {
+    background-color: #fff4e0; /* Fundo em tom suave */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333; /* Cor principal do texto */
+}
+
+/* Estilo para o header */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #d62828; 
+}
+
+h1.cimaSite {
+    margin: 0;
+    font-size: 3em;
+    color: #fcbf49; /* Amarelo  para destacar o título */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra  */
+}
+
+/* Estilo para o menu de navegação */
+nav.bordas {
+    background-color: #333; /* Preto clássico para contraste */
+    padding: 15px 0;
+    border-bottom: 4px solid #fcbf49; /* Borda amarela para criar contraste com o preto */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    display: inline-block;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Suave transição ao passar o mouse */
+}
+
+nav a:hover {
+    background-color: #d62828; /* Cor vermelha ao passar o mouse, em harmonia com o header */
+    border-radius: 5px; /* Bordas arredondadas para suavizar */
+}
+
+
+#centralizarImg {
+    display: block;
+    margin: 25px auto; /* Centraliza e adiciona espaçamento */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para realçar a imagem */
+}
+
+/* Estilo para o main */
+main {
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px; /* Limita a largura máxima para melhor legibilidade */
+    text-align: center;
+    background-color: #f77f00; /* Tom laranja quente, que evoca pôr do sol */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Sombra suave ao redor da secção */
+}
+
+h2 {
+    font-size: 2.5em;
+    color: white; /* Branco para criar contraste com o fundo laranja */
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.3em;
+    color: #fcbf49; /* Amarelo para o texto*/
+    line-height: 1.6; /* Melhor espaçamento entre linhas */
+}
+
+/* Estilo para o footer */
+footer.bordas {
+    background-color: #333; /* Cor preta para o footer */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 4px solid #fcbf49; /* Borda superior amarela para separar do conteúdo */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+/* Efeitos adicionais */
+a {
+    transition: color 0.3s ease;
+}
+
+nav.bordas a:hover {
+    color: #fcbf49; /* Amarelo quando passa o mouse */
+}
+
+#fotografias h3, #video h3, #poema h3 {
+    color: #ffffff; /* Verde para os títulos */
+    font-size: 24px;
+    border-bottom: 2px solid #ffffff; /* Linha inferior verde */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para as imagens das secções de fotografias */
+#fotografias img {
+    width: 250px;
+    height: auto;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+#fotografias p {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Estilo para organizar as imagens em linha */
+#fotografias div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+/* Estilo para o vídeo */
+#video iframe {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+#poema p {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: #555;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-size: small;
+}
+
+input {
+    font-size: medium;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.zoom-img {
+    cursor: zoom-in; /* Altera o cursor para "zoom-in" */
+}
+
+
