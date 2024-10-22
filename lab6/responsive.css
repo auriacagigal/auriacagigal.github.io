@@ -1,0 +1,202 @@
+/* Estilos gerais aplicados a todos os tamanhos */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabeçalho e rodapé sempre no topo e na parte inferior */
+header, footer {
+    background-color: #343a40; /* Cor de fundo escura */
+    color: white; /* Texto em branco */
+    text-align: center; /* Centralizar o texto */
+    padding: 10px;
+}
+
+nav {
+    background-color: #495057; /* Fundo ligeiramente mais claro para o nav */
+    padding: 10px;
+    text-align: center; /* Alinhar links centralmente */
+}
+
+nav a {
+    color: white; /* Links brancos */
+    text-decoration: none; /* Remover sublinhado dos links */
+    padding: 10px;
+}
+
+main, aside {
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura total */
+}
+
+main {
+    background-color: #f8f9fa; /* Fundo claro para o conteúdo principal */
+}
+
+aside {
+    background-color: #e9ecef; /* Fundo mais claro para as laterais */
+}
+
+footer {
+    background-color: #212529; /* Fundo do rodapé ainda mais escuro */
+}
+
+/* Layout de 1 Coluna - Mobile Portrait (até 480px) */
+@media (max-width: 480px) {
+    body {
+        display: flex;
+        flex-direction: column; /* Organiza os elementos verticalmente */
+    }
+    
+    /* Elementos principais ocupam 100% da largura */
+    main, aside {
+        width: 100%;
+    }
+
+    nav {
+        text-align: center; /* Centraliza o nav no mobile */
+    }
+
+    aside {
+        margin-bottom: 10px; /* Espaço entre as laterais e o conteúdo principal */
+    }
+
+    header img {
+        width: 100%; /* Imagem do cabeçalho ajusta para 100% da largura no mobile */
+        height: auto;
+    }
+}
+
+/* Layout de 2 Colunas - Tablet (768px a 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 3fr; /* Dividindo em 2 colunas: lateral (1fr) e conteúdo (3fr) */
+        grid-template-rows: auto 1fr auto; /* Cabeçalho, conteúdo e rodapé */
+        grid-gap: 10px;
+    }
+
+    header {
+        grid-column: 1 / -1; /* Cabeçalho ocupa a largura total */
+    }
+
+    nav {
+        grid-column: 1 / -1; /* Nav também ocupa a largura total */
+        text-align: center;
+    }
+
+    main {
+        grid-column: 2 / 3; /* Conteúdo principal na coluna direita */
+    }
+
+    aside {
+        grid-column: 1 / 2; /* Aside na coluna esquerda */
+    }
+
+    footer {
+        grid-column: 1 / -1; /* Rodapé ocupa a largura total */
+    }
+
+    header img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Outro Layout de 2 Colunas (conteúdo principal à esquerda) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body.right-layout {
+        grid-template-columns: 3fr 1fr; /* Lateral à direita e conteúdo principal à esquerda */
+    }
+
+    main {
+        grid-column: 1 / 2; /* Conteúdo principal à esquerda */
+    }
+
+    aside {
+        grid-column: 2 / 3; /* Aside à direita */
+    }
+}
+
+/* Layout de 3 Colunas - Desktop (1025px a 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr; /* 3 colunas: lateral, conteúdo, lateral */
+        grid-template-rows: auto 1fr auto; /* Cabeçalho, conteúdo e rodapé */
+        grid-gap: 20px;
+    }
+
+    header {
+        grid-column: 1 / 4; /* Cabeçalho ocupa a largura total */
+        padding: 20px; /* Aumenta o padding para telas maiores */
+    }
+
+    nav {
+        grid-column: 1 / 4; /* Nav ocupa a largura total */
+        display: flex;
+        justify-content: space-around; /* Espaçamento entre os links */
+    }
+
+    main {
+        grid-column: 2 / 3; /* Conteúdo principal ao centro */
+    }
+
+    aside:first-of-type {
+        grid-column: 1 / 2; /* Lateral à esquerda */
+    }
+
+    aside:last-of-type {
+        grid-column: 3 / 4; /* Lateral à direita */
+    }
+
+    footer {
+        grid-column: 1 / 4; /* Rodapé ocupa a largura total */
+    }
+}
+
+/* Layout para 4K - 3 Colunas com mais espaço (acima de 2560px) */
+@media (min-width: 2560px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr; /* Colunas mais largas no centro para conteúdo */
+        grid-template-rows: auto 1fr auto; /* Cabeçalho, conteúdo e rodapé */
+        grid-gap: 30px; /* Maior espaço entre as colunas */
+        max-width: 2560px; /* Limita a largura total para telas 4K */
+        margin: 0 auto; /* Centraliza o layout */
+    }
+
+    header {
+        grid-column: 1 / 4; /* Cabeçalho ocupa a largura total */
+        padding: 30px; /* Mais padding para uma tela maior */
+    }
+
+    nav {
+        grid-column: 1 / 4; /* Nav ocupa a largura total */
+        display: flex;
+        justify-content: space-evenly; /* Espaçamento igual entre os links */
+        font-size: 1.2rem; /* Links um pouco maiores */
+    }
+
+    main {
+        grid-column: 2 / 3; /* Conteúdo principal ao centro */
+    }
+
+    aside:first-of-type {
+        grid-column: 1 / 2; /* Lateral à esquerda */
+    }
+
+    aside:last-of-type {
+        grid-column: 3 / 4; /* Lateral à direita */
+    }
+
+    footer {
+        grid-column: 1 / 4; /* Rodapé ocupa a largura total */
+    }
+
+    header img {
+        width: 100%;
+        height: auto;
+    }
+}
