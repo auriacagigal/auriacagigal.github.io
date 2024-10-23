@@ -250,3 +250,57 @@ section#experimenta {
 .material-icons:hover {
     color: #ffa07a; /* Muda a cor ao passar o mouse */
 }
+
+.paralax{
+
+    background-image: url("images/sorriso.jpg");
+min-height: 500px;
+background-attachment: fixed;
+/* centrar e escalar imagem */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+    
+}
+
+/* Estilo galeria */
+.foto-galeria {
+    padding: 20px;
+    text-align: center;
+}
+
+.grupo-foto {
+    display: flex; /* organizar as imagens */
+    justify-content: center;
+    flex-wrap: wrap; /* galeria responsiva */
+    margin-bottom: 20px; /* Espaço entre os grupo de fotos */
+}
+
+.photo-item {
+    margin: 10px; /* Espaçamento ao redor de cada foto */
+    text-align: center;
+}
+
+.photo-item img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover; /*  manter proporção da img */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Animação para todas as imagens */
+}
+
+/* Estilo padrão para imagens */
+.normal-photo {
+    border: 2px solid #ccc;
+}
+
+/* Efeito de transformação para algumas fotos */
+.transform-photo:hover {
+    transform: scale(1.1); /* Aumenta a foto ao passar o mouse */
+    border: 2px solid #007BFF; /* Bordas de cor diferente para destaque */
+}
+
+/* Efeito  filtro de cor */
+.hover-photo:hover {
+    filter: grayscale(100%); /* Filtro preto e branco ao passar o mouse */
+    border: 2px solid #28a745; /* Bordas de cor diferente */
+}

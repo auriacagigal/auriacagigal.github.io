@@ -1,0 +1,32 @@
+* {
+    
+    margin: 0;
+    padding: 0;
+    font-family: Garamond, serif;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial;
+    font-size: 17px;
+  }
+  
+  #video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Ocupa a largura inteira da janela */
+    height: 100vh; /* Ocupa a altura inteira da janela */
+    object-fit: cover; /* Mantém a proporção e cobre todo ecra */
+    z-index: -1; /* Certifique-se de que o vídeo esteja atrás do conteúdo */
+  }
+  
+  .caixinha {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
