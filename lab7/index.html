@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <title>Example</title>
+</head>
+
+<script>
+    
+
+</script>
+
+
+<body>
+  <ol>
+    <li id="passaPorCima">Passa por aqui!</li>
+
+   
+    
+    <br>    
+    <li id="colorText">Pinta-me 
+        <button id="redButton">Red</button>
+        <button id="greenButton">Green</button>
+        <button id="blueButton">Blue</button>
+    </li>
+   
+    <br>
+    <li >Experimenta escrever...  
+        <input id="inputText" type="text">       
+    </li>
+    <br>
+
+    <li>Escolha uma cor em inglês:  
+        <input type="text">
+        <button>Submeter</button>        
+    </li>
+
+    <br>
+    <li>
+        <button>Conta!</button> 33
+    </li>
+
+</ol>
+
+<script>
+
+    //primeiro
+    const mouseText = document.querySelector("#passaPorCima");
+    mouseText.onmouseover = () => mouseText.textContent = "Obrigada por passares!";
+    mouseText.onmouseout = () => mouseText.textContent = "Passa por aqui!";
+
+    //segundo
+    const colorText = document.querySelector("#colorText");
+    const redButton = document.querySelector("#redButton");
+    const greenButton = document.querySelector("#greenButton");
+    const blueButton = document.querySelector("#blueButton");
+
+    
+    redButton.onclick = () => colorText.style.color = "red";
+    greenButton.onclick = () => colorText.style.color = "green";
+    blueButton.onclick = () => colorText.style.color = "blue";
+
+    //terceiro
+
+    const inputText = document.querySelector("#inputText");
+    const colors = ["red", "green", "blue", "orange", "purple", "pink"];
+    let colorIndex = 0;
+    inputText.addEventListener("change", () => {
+    inputText.style.backgroundColor = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length; });
+
+</script>
+</body>
+</html>

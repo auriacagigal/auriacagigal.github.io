@@ -90,6 +90,7 @@ footer {
 
     header {
         grid-column: 1 / 4; /* Cabeçalho ocupa a largura total */
+        w
         padding: 20px; /* Aumenta o padding para telas maiores */
     }
 
