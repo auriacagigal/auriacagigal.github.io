@@ -34,7 +34,7 @@
 
     <li>Escolha uma cor em inglês:  
         <input type="text">
-        <button>Submeter</button>        
+        <button id="#caixaMudar">Submeter</button>        
     </li>
 
     <br>
@@ -71,6 +71,13 @@
     inputText.style.backgroundColor = colors[colorIndex];
     colorIndex = (colorIndex + 1) % colors.length; });
 
+        //quarto
+
+        document.querySelector('input').addEventListener('change', function(){
+            document.querySelector("#caixaMudar").style=this.value;
+
+        })
+        
 </script>
 </body>
 </html>
