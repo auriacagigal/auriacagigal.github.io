@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
     <script src="main.js"></script>
     <title>Example</title>
 </head>
@@ -14,36 +15,52 @@
 
 
 <body>
-  <ol>
-    <li id="passaPorCima">Passa por aqui!</li>
 
-   
-    
-    <br>    
-    <li id="colorText">Pinta-me 
-        <button id="redButton">Red</button>
-        <button id="greenButton">Green</button>
-        <button id="blueButton">Blue</button>
-    </li>
-   
-    <br>
-    <li id="inputText">Experimenta escrever...  
-        <input id="inputBox" type="text">       
-    </li>
-    <br>
+  <nav class="menu">
+    <ul>
+        <li><a href="https://auriacagigal.github.io/">Página Labs</a></li>
+        <li><a href="index.html">Experimentando Java</a></li>
+        <li><a href="eventos.html">Experimentando Java parte 2</a></li>
+       
+    </ul>
+  </nav>
 
-    <li>Escolha uma cor em inglês:  
-        <input id="caixaDeCor" type="text">
-        <button id="caixaMudar">Mudar a cor</button>        
-    </li>
+  <nav class="container">
 
-    <br>
-    <li>
-        <button id="incrementButton">Conta!</button>
-        <span id="counter"> 33</span>
-    </li>
+    <ol>
+      <li id="passaPorCima">Passa por aqui!</li>
+  
+     
+      
+      <br>    
+      <li id="colorText">Pinta-me 
+          <button id="redButton">Red</button>
+          <button id="greenButton">Green</button>
+          <button id="blueButton">Blue</button>
+      </li>
+     
+      <br>
+      <li id="inputText">Experimenta escrever...  
+          <input id="inputBox" type="text">       
+      </li>
+      <br>
+  
+      <li>Escolha uma cor em inglês:  
+          <input id="caixaDeCor" type="text">
+          <button id="caixaMudar">Mudar a cor</button>        
+      </li>
+  
+      <br>
+      <li>
+          <button id="incrementButton">Conta!</button>
+          <span id="counter"> 33</span>
+      </li>
+  
+  </ol>
 
-</ol>
+
+  </nav>
+  
 
 <script>
 
@@ -94,7 +111,7 @@
 
       // Seleciona o botão e o elemento que exibe o contador
       const button = document.getElementById("#incrementButton");
-    const counter = document.getElementById("#counter");
+      const counter = document.getElementById("#counter");
 
     // Adiciona um evento de clique ao botão
     button.addEventListener('click', () => {

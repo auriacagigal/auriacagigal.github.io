@@ -1,0 +1,149 @@
+/* Estilos Globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Menu de Navegação */
+.menu {
+    width: 100vw; /* Ocupa toda a largura da janela */
+    background-color: #4CAF50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.menu ul li {
+    margin: 0 20px;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Container Principal */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin: 100px 0 20px; /* Espaço adicional no topo para o menu fixo */
+    text-align: center;
+}
+
+/* Títulos e Parágrafos */
+h1 {
+    color: #4CAF50;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Formulário de Pesquisa */
+.form-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.form-container label {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+/* Lista de Países */
+.country-list h2 {
+    font-size: 1.8em;
+    color: #4CAF50;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.country-item {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.country-item h3 {
+    color: #333;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.country-item p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.country-item strong {
+    color: #4CAF50;
+}
