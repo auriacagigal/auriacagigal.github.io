@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="main.js"></script>
+    <title>Example</title>
+</head>
+
+<script>
+    
+
+</script>
+
+
+<body>
+
+  <nav class="menu">
+    <ul>
+        <li><a href="https://auriacagigal.github.io/">Página Labs</a></li>
+        <li><a href="index.html">Experimentando Java</a></li>
+        <li><a href="eventos.html">Experimentando Java parte 2</a></li>
+       
+    </ul>
+  </nav>
+
+  <nav class="container">
+
+    <ol>
+      <li id="passaPorCima">Passa por aqui!</li>
+  
+     
+      
+      <br>    
+      <li id="colorText">Pinta-me 
+          <button id="redButton">Red</button>
+          <button id="greenButton">Green</button>
+          <button id="blueButton">Blue</button>
+      </li>
+     
+      <br>
+      <li id="inputText">Experimenta escrever...  
+          <input id="inputBox" type="text">       
+      </li>
+      <br>
+  
+      <li>Escolha uma cor em inglês:  
+          <input id="caixaDeCor" type="text">
+          <button id="caixaMudar">Mudar a cor</button>        
+      </li>
+  
+      <br>
+      <li>
+          <button id="incrementButton">Conta!</button>
+          <span id="counter"> 33</span>
+      </li>
+  
+  </ol>
+
+
+  </nav>
+  
+
+<script>
+
+    //primeiro
+    const mouseText = document.querySelector("#passaPorCima");
+    mouseText.onmouseover = () => mouseText.textContent = "Obrigada por passares!";
+    mouseText.onmouseout = () => mouseText.textContent = "Passa por aqui!";
+
+    //segundo
+    const colorText = document.querySelector("#colorText");
+    const redButton = document.querySelector("#redButton");
+    const greenButton = document.querySelector("#greenButton");
+    const blueButton = document.querySelector("#blueButton");
+
+    
+    redButton.onclick = () => colorText.style.color = "red";
+    greenButton.onclick = () => colorText.style.color = "green";
+    blueButton.onclick = () => colorText.style.color = "blue";
+
+    //terceiro
+    
+    const inputBox = document.getElementById("inputBox");
+
+    // Array com as cores desejadas
+    const colors = ["pink", "yellow", "green"];
+    let colorIndex = 0;
+
+    // Adiciona um evento de entrada para mudar a cor
+    inputBox.addEventListener("input", () => {
+      // Alterna a cor conforme a sequência do array
+      inputBox.style.backgroundColor = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length; // Avança para a próxima cor
+    });
+
+        //quarto
+
+        
+        const caixaDeCor=document.querySelector("#caixaDeCor")
+
+     // Adiciona um evento change ao input
+    document.querySelector('#caixaMudar').addEventListener('click', function() {
+      // Altera a cor de fundo da página de acordo com o valor do input
+      document.querySelector('body').style.backgroundColor = caixaDeCor.value;
+
+    });
+
+    //quinto
+
+      // Seleciona o botão e o elemento que exibe o contador
+      const button = document.getElementById("#incrementButton");
+      const counter = document.getElementById("#counter");
+
+    // Adiciona um evento de clique ao botão
+    button.addEventListener('click', () => {
+      // Converte o valor do contador para número, incrementa 1 e atualiza o conteúdo
+      counter.textContent = parseInt(counter.textContent) + 1;
+    });
+        
+</script>
+</body>
+</html>
