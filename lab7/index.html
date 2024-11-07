@@ -27,19 +27,20 @@
     </li>
    
     <br>
-    <li >Experimenta escrever...  
-        <input id="inputText" type="text">       
+    <li id="inputText">Experimenta escrever...  
+        <input id="inputBox" type="text">       
     </li>
     <br>
 
     <li>Escolha uma cor em inglês:  
-        <input type="text">
-        <button id="#caixaMudar">Submeter</button>        
+        <input id="caixaDeCor" type="text">
+        <button id="caixaMudar">Mudar a cor</button>        
     </li>
 
     <br>
     <li>
-        <button>Conta!</button> 33
+        <button id="incrementButton">Conta!</button>
+        <span id="counter"> 33</span>
     </li>
 
 </ol>
@@ -63,20 +64,43 @@
     blueButton.onclick = () => colorText.style.color = "blue";
 
     //terceiro
+    
+    const inputBox = document.getElementById("inputBox");
 
-    const inputText = document.querySelector("#inputText");
-    const colors = ["red", "green", "blue", "orange", "purple", "pink"];
+    // Array com as cores desejadas
+    const colors = ["pink", "yellow", "green"];
     let colorIndex = 0;
-    inputText.addEventListener("change", () => {
-    inputText.style.backgroundColor = colors[colorIndex];
-    colorIndex = (colorIndex + 1) % colors.length; });
+
+    // Adiciona um evento de entrada para mudar a cor
+    inputBox.addEventListener("input", () => {
+      // Alterna a cor conforme a sequência do array
+      inputBox.style.backgroundColor = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length; // Avança para a próxima cor
+    });
 
         //quarto
 
-        document.querySelector('input').addEventListener('change', function(){
-            document.querySelector("#caixaMudar").style=this.value;
+        
+        const caixaDeCor=document.querySelector("#caixaDeCor")
 
-        })
+     // Adiciona um evento change ao input
+    document.querySelector('#caixaMudar').addEventListener('click', function() {
+      // Altera a cor de fundo da página de acordo com o valor do input
+      document.querySelector('body').style.backgroundColor = caixaDeCor.value;
+
+    });
+
+    //quinto
+
+      // Seleciona o botão e o elemento que exibe o contador
+      const button = document.getElementById("#incrementButton");
+    const counter = document.getElementById("#counter");
+
+    // Adiciona um evento de clique ao botão
+    button.addEventListener('click', () => {
+      // Converte o valor do contador para número, incrementa 1 e atualiza o conteúdo
+      counter.textContent = parseInt(counter.textContent) + 1;
+    });
         
 </script>
 </body>

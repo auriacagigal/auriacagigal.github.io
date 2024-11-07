@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorando a Cultura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .event-box {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        h1, h2, h3 {
+            color: #5a5a5a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Explorando a Cultura</h1>
+    <p>A cultura é uma parte vital da nossa identidade e nos conecta a tradições, linguagens e expressões artísticas diversas. Interaja com os elementos abaixo para aprender mais sobre alguns aspectos culturais.</p>
+
+    <!-- Eventos de Rato -->
+    <h2>Eventos de Rato</h2>
+    <div id="clickEvent" class="event-box">Clique aqui para aprender sobre tradições culturais</div>
+    <div id="dblclickEvent" class="event-box">Dê um duplo clique para descobrir curiosidades culturais</div>
+    <div id="mouseoverEvent" class="event-box">Passe o mouse para explorar música e dança</div>
+    <div id="mouseoutEvent" class="event-box">Saia com o mouse para ver uma dica de leitura</div>
+    <div id="mousemoveEvent" class="event-box">Mova o mouse para experimentar um idioma diferente</div>
+
+    <!-- Eventos de Teclado -->
+    <h2>Eventos de Teclado</h2>
+    <input type="text" id="keydownEvent" placeholder="Pressione uma tecla e descubra um idioma" class="event-box">
+    <input type="text" id="keyupEvent" placeholder="Solte a tecla para mais informações" class="event-box">
+
+    <!-- Eventos de Formulário -->
+    <h2>Eventos de Formulário</h2>
+    <form id="formEvent" class="form-container">
+        <label for="changeEvent">Selecione um continente para ver um fato cultural:</label>
+        <select id="changeEvent">
+            <option value="africa">África</option>
+            <option value="asia">Ásia</option>
+            <option value="europa">Europa</option>
+            <option value="america">América</option>
+        </select>
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Elemento para Manipulação -->
+    <h2>Alterar Elemento</h2>
+    <div id="alterTextContent" class="event-box">Clique para saber mais sobre costumes locais</div>
+    <div id="alterInnerHTML" class="event-box">Clique para ver uma citação cultural</div>
+    <div id="alterStyle" class="event-box">Clique para mudar o estilo e apreciar a arte visual</div>
+</div>
+
+<script>
+    // Eventos de Rato
+    document.getElementById("clickEvent").addEventListener("click", function() {
+        alert("Tradições culturais são passadas de geração em geração!");
+    });
+
+    document.getElementById("dblclickEvent").addEventListener("dblclick", function() {
+        alert("Sabia que cada país tem costumes únicos de celebração?");
+    });
+
+    document.getElementById("mouseoverEvent").addEventListener("mouseover", function() {
+        this.style.backgroundColor = "lightgreen";
+        this.textContent = "Música e dança são expressões culturais vibrantes!";
+    });
+
+    document.getElementById("mouseoutEvent").addEventListener("mouseout", function() {
+        this.style.backgroundColor = "";
+        this.textContent = "Saia com o mouse para ver uma dica de leitura";
+    });
+
+    document.getElementById("mousemoveEvent").addEventListener("mousemove", function() {
+        this.textContent = "Olá! (em Espanhol: ¡Hola!)";
+    });
+
+    // Eventos de Teclado
+    document.getElementById("keydownEvent").addEventListener("keydown", function(event) {
+        console.log("Idioma selecionado: Japonês - Konnichiwa!");
+    });
+
+    document.getElementById("keyupEvent").addEventListener("keyup", function(event) {
+        console.log("Idioma liberado: Francês - Bonjour!");
+    });
+
+    // Eventos de Formulário
+    document.getElementById("changeEvent").addEventListener("change", function() {
+        const continente = this.value;
+        let fatoCultural = "";
+
+        switch (continente) {
+            case "africa":
+                fatoCultural = "A África tem mais de 2.000 idiomas diferentes!";
+                break;
+            case "asia":
+                fatoCultural = "O festival de Diwali é uma das maiores celebrações na Ásia.";
+                break;
+            case "europa":
+                fatoCultural = "Na Europa, o carnaval de Veneza é mundialmente famoso.";
+                break;
+            case "america":
+                fatoCultural = "Na América Latina, o Dia dos Mortos é uma tradição importante.";
+                break;
+        }
+
+        alert("Fato Cultural: " + fatoCultural);
+    });
+
+    document.getElementById("formEvent").addEventListener("submit", function(event) {
+        event.preventDefault(); // Previne o envio do formulário
+        alert("Obrigado por explorar a cultura conosco!");
+    });
+
+    // Alterar Elemento
+    document.getElementById("alterTextContent").addEventListener("click", function() {
+        this.textContent = "Costumes locais nos conectam às nossas raízes culturais.";
+    });
+
+    document.getElementById("alterInnerHTML").addEventListener("click", function() {
+        this.innerHTML = "<em>\"A cultura é a identidade da alma.\"</em>";
+    });
+
+    document.getElementById("alterStyle").addEventListener("click", function() {
+        this.style.color = "white";
+        this.style.backgroundColor = "darkred";
+        this.style.fontStyle = "italic";
+    });
+</script>
+
+</body>
+</html>
