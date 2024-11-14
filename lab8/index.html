@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos.css">
     <script src="main.js"></script>
     <title>Example</title>
 </head>
@@ -29,10 +29,8 @@
 
     <ol>
       <li id="passaPorCima">Passa por aqui!</li>
-  
-     
-      
-      <br>    
+        <br>  
+
       <li id="colorText">Pinta-me 
           <button id="redButton">Red</button>
           <button id="greenButton">Green</button>
@@ -45,18 +43,38 @@
       </li>
       <br>
   
-      <li>Escolha uma cor em inglês:  
-          <input id="caixaDeCor" type="text">
-          <button id="caixaMudar">Mudar a cor</button>        
+      <li>Escolha uma cor:  
+        <select id="colorPicker" onchange="changeBackgroundColor()">
+          <option value="white">White</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>       
       </li>
   
       <br>
       <li>
-          <button id="incrementButton">Conta!</button>
-          <span id="counter"> 33</span>
-      </li>
+        <button id="incrementButton">Conta!</button>
+        <span id="counter"> 33</span>
+    </li>
+
+    <br>
+    <li> 
+      <form id="userForm" onsubmit="displayMessage(event)">
+        <input type="text" id="name" placeholder="Nome" required>
+        <input type="number" id="age" placeholder="Idade" required>
+        <button type="submit">Submit</button>
+      </form>
+       <p id="message"></p>
+    </li>
+
+    <li>
+      Automatic Counter: <span id="counter2">0</span>
+
+    </li>
   
   </ol>
+
+ 
 
 
   </nav>

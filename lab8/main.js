@@ -47,4 +47,27 @@ formulario.addEventListener("submit", function(event) {
     }
 });
 
+//----------------------------------------------------------
+function changeBackgroundColor() {
+    const selectedColor = document.getElementById('colorPicker').value;
+    document.body.style.backgroundColor = selectedColor;
+}
+//--------------------------------------
+
+function displayMessage(event) {
+    event.preventDefault(); // Evita o recarregamento da página
+
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+
+    const message = `Olá, o ${name} tem ${age}!`;
+    document.getElementById('message').textContent = message;
+}
+
+//----------------
+let count1 = 0;
+        setInterval(() => {
+            count1++;
+            document.getElementById('counter2').textContent = count1;
+        }, 1000); // Atualiza o contador a cada segundo
 
