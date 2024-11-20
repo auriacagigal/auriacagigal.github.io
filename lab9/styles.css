@@ -1,51 +1,115 @@
-* {
-    margin:0;  
-    padding:0;  
-    box-sizing: border-box; /* medidas sao tomadas da borda */
-    font-family: Garamond, serif;
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 
 header {
-    background-color: #800080; /* Roxo */
+    background-color: #db4f4f; 
+    color: white; 
+    padding: 10px 20px; /* Espaçamento interno */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: fixed; /* header fixo */
+    top: 0; /* Fixa no topo */
+    width: 100%; /* Ocupa toda a largura */
+    z-index: 1000; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destacar */
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav a {
     color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 main {
-    margin-top: 120px; /* Espaço para o header e o nav fixos */
+    margin-top: 100px; 
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.product-list, .basket-list {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
-body{
+article {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
     text-align: center;
-    background-color: rgb(218, 213, 213);
+    width: 250px;
 }
 
+article img {
+    max-width: 100%;
+    border-radius: 5px;
+}
 
+article h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #db4f4f;
+}
 
-
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: white; 
-    color: black;
-    text-align: center;
-    padding: 10px 0;
-    font-family: Arial, sans-serif;
+article .price {
+    font-weight: bold;
     font-size: 16px;
+    margin-bottom: 15px;
+}
+
+article p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+article button {
+    background-color:#db4f4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+article button:hover {
+    background-color: #db4f4f;
+}
+
+footer{
+
+    background-color: #db4f4f;
+    text-align: center;
+    
+    padding: 25px;
+}
+
+#product-container, #basket-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
