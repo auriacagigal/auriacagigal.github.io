@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Faz a requisição para obter os produtos
     fetch("https://deisishop.pythonanywhere.com/products")
     .then(response => response.json())
-    .then(produtos => console.log(produtos))  
+    .then(produtos => {
+        console.log(produtos);
+        carregarProdutos(produtos); // Atualiza o cesto ao carregar a página
+    })  
     
     
 });
