@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Faz a requisição para obter os produtos
-    fetch("https://deisishop.pythonanywhere.com/products")
+    fetch("https://deisishop.pythonanywhere.com/products/")
     .then(response => response.json())
     .then(produtos => {
         console.log(produtos);
@@ -73,7 +73,7 @@ function atualizaCesto() {
     }
 
     // Requisição para carregar os produtos novamente (para garantir que a lista está atualizada)
-    fetch("https://deisishop.pythonanywhere.com/products")
+    fetch("https://deisishop.pythonanywhere.com/products/")
         .then(response => response.json())
         .then(produtos => {
             produtosSelecionados.forEach(id => {
@@ -117,6 +117,59 @@ function criaProdutoCesto(produto) {
 
     return article;
 }
+
+function configurarFiltros(produtos) {
+    const filtroCategoria = document.getElementById("filtro-categoria");
+    const ordenarPreco = document.getElementById("ordenar-preco");
+    const pesquisaNome = document.getElementById("pesquisa-nome");
+
+    let produtosFiltrados = [...produtos]; // Copia inicial dos produtos
+
+    // Filtrar por categoria
+    filtroCategoria.addEventListener("change", () => {
+        const categoriaSelecionada = filtroCategoria.value;
+
+        if (categoriaSelecionada === "todas") {
+            produtosFiltrados = [...produtos];
+        } else {
+            produtosFiltrados = produtos.filter(produto => produto.category === categoriaSelecionada);
+        }
+
+        aplicarFiltrosOrdenacaoPesquisa(produtosFiltrados, ordenarPreco.value, pesquisaNome.value);
+    });
+
+    // Ordenar por preço
+    ordenarPreco.addEventListener("change", () => {
+        aplicarFiltrosOrdenacaoPesquisa(produtosFiltrados, ordenarPreco.value, pesquisaNome.value);
+    });
+
+    // Pesquisar por nome
+    pesquisaNome.addEventListener("input", () => {
+        aplicarFiltrosOrdenacaoPesquisa(produtosFiltrados, ordenarPreco.value, pesquisaNome.value);
+    });
+}
+
+// Função para aplicar filtros, ordenação e pesquisa
+function aplicarFiltrosOrdenacaoPesquisa(produtos, ordem, pesquisa) {
+    let produtosFiltrados = [...produtos];
+
+    // Aplicar pesquisa por nome
+    if (pesquisa) {
+        produtosFiltrados = produtosFiltrados.filter(produto =>
+            produto.title.toLowerCase().includes(pesquisa.toLowerCase())
+        );
+    }
+
+    // Aplicar ordenação por preço
+    if (ordem === "asc") {
+        produtosFiltrados.sort((a, b) => a.price - b.price);
+    } else if (ordem === "desc") {
+        produtosFiltrados.sort((a, b) => b.price - a.price);
+    }
+
+    carregarProdutos(produtosFiltrados);
+}
+
 
 // Função para remover um produto do cesto
 function removerProdutoCesto(produtoId) {
