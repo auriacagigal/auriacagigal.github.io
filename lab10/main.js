@@ -245,6 +245,13 @@ function removerTudoDoCarrinho() {
 document.getElementById("removerTodosBtn").addEventListener("click", removerTudoDoCarrinho);
 
 function minimizaInfo(){
+    let mimimiza = JSON.parse(localStorage.getItem("product-container"));
+    mimimiza = produtosSelecionados.filter(produto => produto.description);
+    localStorage.setItem("product-container", JSON.stringify(mimimiza));
+    removeAux();
+
+
+
     const removProduct=document.querySelector("produtos section ul");
     removProduct.forEach(description => {
         description.remove();
