@@ -40,9 +40,9 @@ function carregarProdutos(produtos) {
         const title = document.createElement("h3");
         title.textContent = produto.title;
 
-        const image = document.createElement("img");
-        image.src = produto.image;
-        image.alt = produto.title;
+        const image1 = document.createElement("img");
+        image1.src = produto.image;
+        image1.alt = produto.title;
 
         const price = document.createElement("h4");
         price.textContent = `€${produto.price.toFixed(2)}`;
@@ -54,7 +54,7 @@ function carregarProdutos(produtos) {
         button.textContent = "+ Adicionar ao Cesto";
         button.addEventListener("click", () => adicionarAoCesto(produto));
 
-        article.append(title, image, price, description, button);
+        article.append(title, image1, price, description, button);
         productContainer.appendChild(article);
     });
 }
