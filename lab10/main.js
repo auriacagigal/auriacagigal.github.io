@@ -245,3 +245,12 @@ function removerTudoDoCarrinho() {
 // Evento do botão "Remover Todos"
 document.getElementById("removerTodosBtn").addEventListener("click", removerTudoDoCarrinho);
 
+function minimizaInfo(){
+    const removProduct=document.querySelector("produtos section ul");
+    removProduct.forEach(description => {
+        description.remove();
+    });
+}
+
+// Evento do botão "Remover a descrição"
+document.getElementById("menosInfo").addEventListener("click", minimizaInfo);
