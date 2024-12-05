@@ -163,3 +163,61 @@ document.getElementById("botao-comprar").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
     atualizaCesto();
 });
+
+// Função para configurar o botão de compra
+function comprar() {
+    const botaoComprar = document.getElementById("botao"); // Seleciona o botão de compra
+    let counter = 1; // Contador para gerenciar a exibição de mensagens
+
+    botaoComprar.onclick = function () {
+        let idProdutos = []; // Lista de IDs dos produtos no carrinho
+        const produtosCarrinho = JSON.parse(localStorage.getItem('produtos-selecionados'));
+        produtosCarrinho.forEach(produto => {
+            idProdutos.push(produto.id); // Adiciona o ID do produto à lista
+        });
+
+        const checkBox = document.getElementById("alunoDeisi"); // Seleciona o checkbox de desconto
+        const cupaoDesconto = document.getElementById("cupao"); // Seleciona o campo de cupom
+        const bodyEnvio = {
+            products: idProdutos, // IDs dos produtos
+            student: checkBox.checked, // Indica se é estudante
+            coupon: cupaoDesconto.value // Código do cupom
+        };
+
+        fetch('https://deisishop.pythonanywhere.com/buy/', {
+            method: 'POST', // Envia os dados via POST
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bodyEnvio) // Converte os dados para JSON
+        })
+            .then(response => response.json())
+            .then(data => {
+                const section = document.getElementById("checkout"); // Seleciona a seção de checkout
+
+                if (counter === 1) {
+                    // Exibe o valor final com desconto
+                    const newH3 = document.createElement('h3');
+                    newH3.id = "desconto";
+                    newH3.textContent = "Valor final a pagar (com eventuais descontos): ";
+                    section.append(newH3);
+                }
+
+                const h3Alterar = document.getElementById("desconto");
+                h3Alterar.textContent = "Valor final a pagar (com eventuais descontos): " + data.totalCost + " €";
+
+                if (counter === 1) {
+                    // Exibe a referência de pagamento
+                    const newP = document.createElement('p');
+                    newP.textContent = "Referência de pagamento: " + data.reference;
+                    newP.id = "referencia";
+                    section.append(newP);
+                }
+
+                const pReferencia = document.getElementById("referencia");
+                pReferencia.textContent = "Referência de pagamento: " + data.reference;
+
+                counter++;
+            });
+    };
+}
