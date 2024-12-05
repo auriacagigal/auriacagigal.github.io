@@ -174,6 +174,8 @@ function comprar() {
     let counter = 1; // Contador para gerenciar a exibição de mensagens
 
     botaoComprar.onclick = function () {
+
+        const nome= document.document.getElementById("nome");
         let idProdutos = []; // Lista de IDs dos produtos no carrinho
         const produtosCarrinho = JSON.parse(localStorage.getItem('produtos-selecionados'));
         produtosCarrinho.forEach(produto => {
@@ -223,6 +225,8 @@ function comprar() {
 
                 counter++;
             });
+
+            alert ("Obrigada pela compra " + $nome);
     };
 }
 
