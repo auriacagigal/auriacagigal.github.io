@@ -223,23 +223,15 @@ function comprar() {
 }
 
 
-// Função para adicionar todos os produtos ao carrinho
-function adicionarTodosAoCarrinho() {
-    const listaProdutos = [...produtos]; // Copia o array global de produtos
-    localStorage.setItem('produtos-selecionados', JSON.stringify(listaProdutos)); // Armazena todos os produtos no `localStorage`
-    atualizaCesto(); // Atualiza o carrinho na interface
-    alert("Todos os produtos foram adicionados ao carrinho!"); // Mensagem de feedback
-}
-
-// Evento do botão "Adicionar Todos"
-document.getElementById("adicionarTodosBtn").addEventListener("click", adicionarTodosAoCarrinho);
 
 
 // Função para remover todos os produtos do carrinho
 function removerTudoDoCarrinho() {
-    localStorage.setItem('produtos-selecionados', JSON.stringify([])); // Esvazia o `localStorage`
-    atualizaCesto(); // Atualiza o carrinho na interface
-    alert("Todos os produtos foram removidos do carrinho!"); // Mensagem de feedback
+
+    let produtosSelecionados = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    produtosSelecionados = produtosSelecionados.filter(produto => produto!== produtoId);
+    localStorage.setItem("produtos-selecionados", JSON.stringify(produtosSelecionados));
+    atualizaCesto();
 }
 
 // Evento do botão "Remover Todos"
