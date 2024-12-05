@@ -121,7 +121,7 @@ document.getElementById("filtro-categoria").addEventListener("change", () => {
     }
 });
 
-document.getElementById("ordenar-preco").addEventListener("change", () => {
+document.getElementById("ordenar-rating").addEventListener("change", () => {
     const ordem = document.getElementById("ordenar-preco").value;
     let produtosOrdenados = [...produtos];
     if (ordem === "ascendente") {
@@ -221,3 +221,27 @@ function comprar() {
             });
     };
 }
+
+
+// Função para adicionar todos os produtos ao carrinho
+function adicionarTodosAoCarrinho() {
+    const listaProdutos = [...produtos]; // Copia o array global de produtos
+    localStorage.setItem('produtos-selecionados', JSON.stringify(listaProdutos)); // Armazena todos os produtos no `localStorage`
+    atualizaCesto(); // Atualiza o carrinho na interface
+    alert("Todos os produtos foram adicionados ao carrinho!"); // Mensagem de feedback
+}
+
+// Evento do botão "Adicionar Todos"
+document.getElementById("adicionarTodosBtn").addEventListener("click", adicionarTodosAoCarrinho);
+
+
+// Função para remover todos os produtos do carrinho
+function removerTudoDoCarrinho() {
+    localStorage.setItem('produtos-selecionados', JSON.stringify([])); // Esvazia o `localStorage`
+    atualizaCesto(); // Atualiza o carrinho na interface
+    alert("Todos os produtos foram removidos do carrinho!"); // Mensagem de feedback
+}
+
+// Evento do botão "Remover Todos"
+document.getElementById("removerTodosBtn").addEventListener("click", removerTudoDoCarrinho);
+
