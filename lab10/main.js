@@ -58,7 +58,7 @@ function carregarProdutos(produtos) {
         button.textContent = "+ Adicionar ao Cesto";
         button.addEventListener("click", () => adicionarAoCesto(produto));
 
-        article.append(title, image1, price, description, button);
+        article.append(title, image1, price, description,rating, button);
         productContainer.appendChild(article);
     });
 }
