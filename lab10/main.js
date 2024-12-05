@@ -224,14 +224,17 @@ function comprar() {
 
 
 
-
+function removeAux(){
+    const basketContainer = document.getElementById("basket-container");
+    basketContainer.innerHTML = ""; // Limpa o cesto
+}
 // Função para remover todos os produtos do carrinho
 function removerTudoDoCarrinho() {
 
     let produtosSelecionados = JSON.parse(localStorage.getItem("produtos-selecionados"));
     produtosSelecionados = produtosSelecionados.filter(produto => produto!== produtoId);
     localStorage.setItem("produtos-selecionados", JSON.stringify(produtosSelecionados));
-    atualizaCesto();
+    removeAux();
 }
 
 // Evento do botão "Remover Todos"
