@@ -50,6 +50,10 @@ function carregarProdutos(produtos) {
         const description = document.createElement("p");
         description.textContent = produto.description;
 
+        const rating= document.createElement("img");
+       rating.textContent = produto.rating;
+
+
         const button = document.createElement("button");
         button.textContent = "+ Adicionar ao Cesto";
         button.addEventListener("click", () => adicionarAoCesto(produto));
