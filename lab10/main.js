@@ -81,6 +81,10 @@ function atualizaCesto() {
         const title = document.createElement("h3");
         title.textContent = produto.title;
 
+        const image = document.createElement("img");
+        image.src = produto.image;
+        image.alt = produto.title;
+
         const price = document.createElement("h4");
         price.textContent = `€${produto.price.toFixed(2)}`;
 
