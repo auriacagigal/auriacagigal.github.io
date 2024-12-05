@@ -1,193 +1,161 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Inicializa o localStorage com a chave "produtos-selecionados" como string vazia, caso não exista
-    if (!localStorage.getItem("produtos-selecionados")) {
-        localStorage.setItem("produtos-selecionados", "");
-    }
+// Inicializa o `localStorage` com a chave 'produtos-selecionados' caso ela não exista
+if (!localStorage.getItem('produtos-selecionados')) {
+    localStorage.setItem('produtos-selecionados', JSON.stringify([]));
+}
 
-    // Faz a requisição para obter os produtos
-    fetch("https://deisishop.pythonanywhere.com/products/")
+// Variável global para armazenar os produtos carregados da API
+let produtos = [];
+
+// Função para carregar os produtos da API
+fetch("https://deisishop.pythonanywhere.com/products/")
     .then(response => response.json())
-    .then(produtos => {
-        console.log(produtos);
-        carregarProdutos(produtos); // Atualiza o cesto ao carregar a página
-    })  
-    
-    
-});
+    .then(data => {
+        produtos = data; // Salva os produtos na variável global
+        carregarProdutos(produtos); // Renderiza os produtos
+    })
+    .catch(error => console.error("Erro ao carregar produtos:", error));
 
-// Função para carregar os produtos disponíveis
+// Função para carregar as categorias dinamicamente
+fetch("https://deisishop.pythonanywhere.com/categories/")
+    .then(response => response.json())
+    .then(categorias => {
+        const filtroCategoria = document.getElementById("filtro-categoria");
+        categorias.forEach(categoria => {
+            const option = document.createElement("option");
+            option.value = categoria;
+            option.textContent = categoria;
+            filtroCategoria.appendChild(option);
+        });
+    })
+    .catch(error => console.error("Erro ao carregar categorias:", error));
+
+// Função para carregar os produtos na interface
 function carregarProdutos(produtos) {
     const productContainer = document.getElementById("product-container");
-    productContainer.innerHTML = ""; // Limpa o contêiner antes de carregar os produtos
+    productContainer.innerHTML = ""; // Limpa o contêiner antes de renderizar
 
     produtos.forEach(produto => {
         const article = document.createElement("article");
 
-        const titulo = document.createElement("h3");
-        titulo.textContent = produto.title;
+        const title = document.createElement("h3");
+        title.textContent = produto.title;
 
-        const imagem = document.createElement("img");
-        imagem.src = produto.image;
-        imagem.alt = produto.title;
+        const image = document.createElement("img");
+        image.src = produto.image;
+        image.alt = produto.title;
 
-        const preco = document.createElement("span");
-        preco.textContent = `Preço: €${produto.price.toFixed(2)}`;
+        const price = document.createElement("h4");
+        price.textContent = `€${produto.price.toFixed(2)}`;
 
-        const botaoAdicionar = document.createElement("button");
-        botaoAdicionar.textContent = "+ Adicionar ao Cesto";
-        botaoAdicionar.addEventListener("click", () => adicionarProdutoCesto(produto.id));
+        const description = document.createElement("p");
+        description.textContent = produto.description;
 
-        article.appendChild(imagem);
-        article.appendChild(titulo);
-        article.appendChild(preco);
-        article.appendChild(botaoAdicionar);
+        const button = document.createElement("button");
+        button.textContent = "+ Adicionar ao Cesto";
+        button.addEventListener("click", () => adicionarAoCesto(produto));
 
+        article.append(title, image, price, description, button);
         productContainer.appendChild(article);
     });
-
-   
 }
 
 // Função para adicionar um produto ao cesto
-function adicionarProdutoCesto(produtoId) {
-    let produtosSelecionados = localStorage.getItem("produtos-selecionados").split(",").filter(Boolean);
-
-    if (!produtosSelecionados.includes(String(produtoId))) {
-        produtosSelecionados.push(produtoId); // Adiciona o ID do produto à lista
-        localStorage.setItem("produtos-selecionados", produtosSelecionados.join(",")); // Atualiza o localStorage
-        atualizaCesto(); // Atualiza o cesto
-    }
+function adicionarAoCesto(produto) {
+    const produtosSelecionados = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    produtosSelecionados.push(produto);
+    localStorage.setItem("produtos-selecionados", JSON.stringify(produtosSelecionados));
+    atualizaCesto();
 }
 
 // Função para atualizar o cesto
 function atualizaCesto() {
     const basketContainer = document.getElementById("basket-container");
-    basketContainer.innerHTML = ""; // Limpa o conteúdo existente
+    basketContainer.innerHTML = ""; // Limpa o cesto
 
-    const produtosSelecionados = localStorage.getItem("produtos-selecionados").split(",").filter(Boolean);
+    const produtosSelecionados = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    let total = 0;
 
-    if (produtosSelecionados.length === 0) {
-        basketContainer.textContent = "Nenhum produto no cesto.";
-        atualizaPrecoTotal(0);
-        return;
-    }
+    produtosSelecionados.forEach(produto => {
+        const article = document.createElement("article");
 
-    // Requisição para carregar os produtos novamente (para garantir que a lista está atualizada)
-    fetch("https://deisishop.pythonanywhere.com/products/")
-        .then(response => response.json())
-        .then(produtos => {
-            produtosSelecionados.forEach(id => {
-                const produto = produtos.find(p => p.id === Number(id));
-                if (produto) {
-                    const article = criaProdutoCesto(produto);
-                    basketContainer.appendChild(article);
-                }
-            });
+        const title = document.createElement("h3");
+        title.textContent = produto.title;
 
-            atualizaPrecoTotal(produtos, produtosSelecionados);
-        })
-        .catch(error => {
-            console.error("Erro ao atualizar o cesto:", error);
-            basketContainer.textContent = "Erro ao atualizar o cesto.";
-        });
-}
+        const price = document.createElement("h4");
+        price.textContent = `€${produto.price.toFixed(2)}`;
 
-// Função para criar o elemento do produto no cesto
-function criaProdutoCesto(produto) {
-    const article = document.createElement("article");
+        const button = document.createElement("button");
+        button.textContent = "- Remover";
+        button.addEventListener("click", () => removerDoCesto(produto.id));
 
-    const titulo = document.createElement("h3");
-    titulo.textContent = produto.title;
+        article.append(title, price, button);
+        basketContainer.appendChild(article);
 
-    const imagem = document.createElement("img");
-    imagem.src = produto.image;
-    imagem.alt = produto.title;
-
-    const preco = document.createElement("span");
-    preco.textContent = `Preço: €${produto.price.toFixed(2)}`;
-
-    const botaoRemover = document.createElement("button");
-    botaoRemover.textContent = "Remover";
-    botaoRemover.addEventListener("click", () => removerProdutoCesto(produto.id));
-
-    article.appendChild(imagem);
-    article.appendChild(titulo);
-    article.appendChild(preco);
-    article.appendChild(botaoRemover);
-
-    return article;
-}
-
-function configurarFiltros(produtos) {
-    const filtroCategoria = document.getElementById("filtro-categoria");
-    const ordenarPreco = document.getElementById("ordenar-preco");
-    const pesquisaNome = document.getElementById("pesquisa-nome");
-
-    let produtosFiltrados = [...produtos]; // Copia inicial dos produtos
-
-    // Filtrar por categoria
-    filtroCategoria.addEventListener("change", () => {
-        const categoriaSelecionada = filtroCategoria.value;
-
-        if (categoriaSelecionada === "todas") {
-            produtosFiltrados = [...produtos];
-        } else {
-            produtosFiltrados = produtos.filter(produto => produto.category === categoriaSelecionada);
-        }
-
-        aplicarFiltrosOrdenacaoPesquisa(produtosFiltrados, ordenarPreco.value, pesquisaNome.value);
+        total += produto.price;
     });
 
-    // Ordenar por preço
-    ordenarPreco.addEventListener("change", () => {
-        aplicarFiltrosOrdenacaoPesquisa(produtosFiltrados, ordenarPreco.value, pesquisaNome.value);
-    });
-
-    // Pesquisar por nome
-    pesquisaNome.addEventListener("input", () => {
-        aplicarFiltrosOrdenacaoPesquisa(produtosFiltrados, ordenarPreco.value, pesquisaNome.value);
-    });
+    const precoTotal = document.getElementById("preco-total");
+    precoTotal.textContent = `Preço total: €${total.toFixed(2)}`;
 }
-
-// Função para aplicar filtros, ordenação e pesquisa
-function aplicarFiltrosOrdenacaoPesquisa(produtos, ordem, pesquisa) {
-    let produtosFiltrados = [...produtos];
-
-    // Aplicar pesquisa por nome
-    if (pesquisa) {
-        produtosFiltrados = produtosFiltrados.filter(produto =>
-            produto.title.toLowerCase().includes(pesquisa.toLowerCase())
-        );
-    }
-
-    // Aplicar ordenação por preço
-    if (ordem === "asc") {
-        produtosFiltrados.sort((a, b) => a.price - b.price);
-    } else if (ordem === "desc") {
-        produtosFiltrados.sort((a, b) => b.price - a.price);
-    }
-
-    carregarProdutos(produtosFiltrados);
-}
-
 
 // Função para remover um produto do cesto
-function removerProdutoCesto(produtoId) {
-    let produtosSelecionados = localStorage.getItem("produtos-selecionados").split(",").filter(Boolean);
-
-    produtosSelecionados = produtosSelecionados.filter(id => Number(id) !== produtoId);
-    localStorage.setItem("produtos-selecionados", produtosSelecionados.join(",")); // Atualiza o localStorage
-    atualizaCesto(); // Atualiza o cesto
+function removerDoCesto(produtoId) {
+    let produtosSelecionados = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    produtosSelecionados = produtosSelecionados.filter(produto => produto.id !== produtoId);
+    localStorage.setItem("produtos-selecionados", JSON.stringify(produtosSelecionados));
+    atualizaCesto();
 }
 
-// Função para calcular e atualizar o preço total
-function atualizaPrecoTotal(produtos = [], produtosSelecionados = []) {
-    const precoTotalElement = document.getElementById("preco-total");
+// Configura eventos para filtros, ordenação e pesquisa
+document.getElementById("filtro-categoria").addEventListener("change", () => {
+    const categoriaSelecionada = document.getElementById("filtro-categoria").value;
+    if (categoriaSelecionada === "todas") {
+        carregarProdutos(produtos);
+    } else {
+        const produtosFiltrados = produtos.filter(produto => produto.category === categoriaSelecionada);
+        carregarProdutos(produtosFiltrados);
+    }
+});
 
-    const total = produtosSelecionados.reduce((soma, id) => {
-        const produto = produtos.find(p => p.id === Number(id));
-        return produto ? soma + produto.price : soma;
-    }, 0);
+document.getElementById("ordenar-preco").addEventListener("change", () => {
+    const ordem = document.getElementById("ordenar-preco").value;
+    let produtosOrdenados = [...produtos];
+    if (ordem === "ascendente") {
+        produtosOrdenados.sort((a, b) => a.price - b.price);
+    } else if (ordem === "descendente") {
+        produtosOrdenados.sort((a, b) => b.price - a.price);
+    }
+    carregarProdutos(produtosOrdenados);
+});
 
-    precoTotalElement.textContent = `Preço total: €${total.toFixed(2)}`;
-}
+document.getElementById("pesquisar").addEventListener("input", () => {
+    const termo = document.getElementById("pesquisar").value.toLowerCase();
+    const produtosFiltrados = produtos.filter(produto =>
+        produto.title.toLowerCase().includes(termo)
+    );
+    carregarProdutos(produtosFiltrados);
+});
+
+// Finaliza a compra
+document.getElementById("botao-comprar").addEventListener("click", () => {
+    const produtosSelecionados = JSON.parse(localStorage.getItem("produtos-selecionados"));
+    const ids = produtosSelecionados.map(produto => produto.id);
+
+    fetch("https://deisishop.pythonanywhere.com/buy/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ products: ids })
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(`Compra finalizada! Referência: ${data.reference}`);
+            localStorage.setItem("produtos-selecionados", JSON.stringify([])); // Limpa o cesto
+            atualizaCesto();
+        })
+        .catch(error => console.error("Erro ao finalizar a compra:", error));
+});
+
+// Inicializa o cesto ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    atualizaCesto();
+});

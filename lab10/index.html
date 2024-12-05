@@ -10,54 +10,65 @@
     <header>
         <h1>Loja</h1>
         <nav>
-            <a href="#">Produtos</a>
-            <a href="#">Cesto</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#cesto">Cesto</a>
         </nav>
     </header>
 
     <main>
-
-        
-        <section id="produtos">
-            <h2>Selecione os seus Produtos</h2>
+        <!-- Seção de Produtos -->
+        <section id="produtos" aria-labelledby="titulo-produtos">
+            <h2 id="titulo-produtos">Selecione os seus Produtos</h2>
             
-            <select id="filtro-categoria">
-                <option value="todas">Todas as categorias</option>
-                <option value="T-shirts">T-shirts</option>
-                <option value="Canecas">Canecas</option>
-                <option value="Meias">Meias</option>
-            </select>
+            <!-- Filtros e Pesquisa -->
+            <section id="submenu">
+                <span>Filtrar por Categoria</span>
+                <select id="filtro-categoria" aria-label="Filtrar por Categoria">
+                    <option value="todas">Todas as categorias</option>
+                    <option value="T-shirts">T-shirts</option>
+                    <option value="Canecas">Canecas</option>
+                    <option value="Meias">Meias</option>
+                </select>
+                <span>Ordenar por Preço</span>
+                <select id="ordenar-preco" aria-label="Ordenar por Preço">
+                    <option value="default">Ordenar por...</option>
+                    <option value="ascendente">Preço: Menor para Maior</option>
+                    <option value="descendente">Preço: Maior para Menor</option>
+                </select>
+                <span>Pesquisar Produtos</span>
+                <input 
+                    type="text" 
+                    id="pesquisar" 
+                    placeholder="Pesquisar por produto" 
+                    aria-label="Pesquisar produtos pelo nome"
+                />
+            </section>
 
-            <select id="ordenar-preco">
-                <option value="default">Ordenar por...</option>
-                <option value="asc">Preço: Menor para Maior</option>
-                <option value="desc">Preço: Maior para Menor</option>
-            </select>
-
-            <input type="text" id="pesquisa-nome" placeholder="Pesquisar por produto" />
-
-
-            <ul id="product-container">
-                
+            <!-- Lista de Produtos -->
+            <ul id="product-container" aria-live="polite" aria-busy="false">
+                <!-- Os produtos serão carregados dinamicamente aqui -->
             </ul>
         </section>
-        
-        <section id="cesto">
-            <h2>Cesto</h2>
-            <ul id="basket-container">
-                
-                <!-- Produtos selecionados -->
+
+        <!-- Seção do Cesto -->
+        <section id="cesto" aria-labelledby="titulo-cesto">
+            <h2 id="titulo-cesto">Cesto</h2>
+            
+            <!-- Lista de Produtos no Cesto -->
+            <ul id="basket-container" aria-live="polite">
+                <!-- Produtos adicionados ao cesto -->
             </ul>
+
+            <!-- Preço Total -->
             <h3 id="preco-total">Preço total: €0.00</h3>
+            <button id="botao-comprar" aria-label="Finalizar compra">Finalizar Compra</button>
         </section>
-        
     </main>
 
-    <footer>2024</footer>
+    <footer>
+        <p>2024</p>
+    </footer>
 
-    
     <script src="main.js"></script>
-    
-
 </body>
 </html>
